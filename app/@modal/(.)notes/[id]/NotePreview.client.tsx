@@ -2,19 +2,18 @@
 
 import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { fetchNoteById } from "@/lib/api";
+import { fetchNoteById } from "@/lib/api/api";
 import type { Note } from "@/types/note";
 import Modal from "@/components/Modal/Modal";
 import Loader from "@/components/Loader/Loader";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 import css from "./NotePreview.module.css";
 
-
 type NotePreviewProps = {
   id: string;
 };
 
- function NotePreview({ id }: NotePreviewProps) {
+function NotePreview({ id }: NotePreviewProps) {
   const router = useRouter();
 
   const close = () => router.back();

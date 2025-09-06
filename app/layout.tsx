@@ -5,8 +5,9 @@ import Header from "@/components/Header/Header";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import { Roboto } from "next/font/google";
 
+
 const roboto = Roboto({
-  weight: ["400","700"],
+  weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
@@ -22,7 +23,12 @@ export const metadata: Metadata = {
     description:
       "NoteHub is a simple and efficient app for managing personal notes.It helps you create, edit, and organize notes easily, keeping all your ideas in one place.",
     url: "https://08-zustand-black-xi.vercel.app/",
-    images: [{ url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg" }],
+    images: [
+      { url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg" },
+    ],
+  },
+  icons: {
+    icon: "/favicon.ico",
   },
 };
 

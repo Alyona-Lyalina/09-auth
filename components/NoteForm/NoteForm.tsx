@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createNote } from "@/lib/api";
+import { createNote } from "@/lib/api/api";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
 import type { NoteTag } from "@/types/note";
 import css from "./NoteForm.module.css";
@@ -11,7 +11,7 @@ import css from "./NoteForm.module.css";
 const tags: NoteTag[] = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
 
 interface NoteFormProps {
-  onCancel?: () => void; 
+  onCancel?: () => void;
 }
 
 const NoteForm = ({ onCancel }: NoteFormProps) => {
@@ -58,10 +58,10 @@ const NoteForm = ({ onCancel }: NoteFormProps) => {
     }
   };
 
-   const handleCancel = () => {
-     if (onCancel) onCancel(); 
-     else router.push("/notes/filter/All");
-   };
+  const handleCancel = () => {
+    if (onCancel) onCancel();
+    else router.push("/notes/filter/All");
+  };
 
   const handleInputChange = (field: keyof typeof draft, value: string) => {
     setDraft({ [field]: value });

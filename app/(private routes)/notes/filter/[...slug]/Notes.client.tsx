@@ -1,11 +1,10 @@
-
 "use client";
 
 import { useState } from "react";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { useDebounce } from "use-debounce";
-import { fetchNotes } from "../../../../lib/api";
-import type { FetchNotesResponse } from "../../../../lib/api";
+import { fetchNotes } from "@/lib/api/clientApi";
+import type { FetchNotesResponse } from "@/lib/api/clientApi";
 import type { FilterTag } from "@/types/note";
 
 import SearchBox from "@/components/SearchBox/SearchBox";
@@ -22,7 +21,6 @@ interface NotesClientProps {
   tag?: FilterTag;
 }
 
-
 const NotesClient = ({ tag }: NotesClientProps) => {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,15 +31,14 @@ const NotesClient = ({ tag }: NotesClientProps) => {
     setPage(1);
   };
 
- 
   const { data, isLoading, isError } = useQuery<FetchNotesResponse>({
-    queryKey: ["notes", page, debouncedSearchQuery, { tag }], 
+    queryKey: ["notes", page, debouncedSearchQuery, { tag }],
     queryFn: () =>
       fetchNotes({
         page,
         perPage,
         search: debouncedSearchQuery,
-        ...(tag && tag !== "All" ? { tag } : {}), 
+        ...(tag && tag !== "All" ? { tag } : {}),
       }),
     placeholderData: keepPreviousData,
   });

@@ -3,12 +3,11 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import { fetchNotes } from "@/lib/api";
+import { fetchNotes } from "@/lib/api/clientApi";
 import NotesClient from "./Notes.client";
 import { FilterTag } from "@/types/note";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-
 
 type NotesPageProps = { params: Promise<{ slug?: string[] }> };
 
@@ -21,9 +20,9 @@ const validTags: FilterTag[] = [
   "All",
 ];
 
-export async function generateMetadata(
-  { params }: NotesPageProps
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: NotesPageProps): Promise<Metadata> {
   const { slug } = await params;
   const urlTag = slug?.[0] ?? "All";
 
@@ -56,7 +55,6 @@ export async function generateMetadata(
     },
   };
 }
-
 
 export default async function NotesPage({ params }: NotesPageProps) {
   const { slug } = await params;

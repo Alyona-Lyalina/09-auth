@@ -1,4 +1,12 @@
-/* .userEmail {
+.navigation {
+  margin-top: 8px;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.userEmail {
   color: white;
   margin-right: 0.5rem;
   font-size: 0.9rem;
@@ -33,4 +41,4 @@
 
 .navigationLink:hover {
   color: #ddd;
-} */
+}
