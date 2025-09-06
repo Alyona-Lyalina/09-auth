@@ -1,13 +1,21 @@
+
 "use client";
 
 import Link from "next/link";
 import { useState } from "react";
 import css from "./TagsMenu.module.css";
+import { usePathname } from "next/navigation";
+
 
 const tags = ["All", "Todo", "Work", "Personal", "Meeting", "Shopping"];
 
 const TagsMenu = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+
+  const hidePaths = ["/", "/sign-in", "/sign-up"];
+   if (hidePaths.includes(pathname)) return null;
  
   return (
     <div className={css.menuContainer}>

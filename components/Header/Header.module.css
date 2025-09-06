@@ -35,3 +35,8 @@
 .navigation li a:hover {
   color: #ddd;
 }
+
+.homeLink {
+  padding-top: 8px;
+  display: inline-block;
+}
