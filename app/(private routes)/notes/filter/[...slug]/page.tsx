@@ -35,7 +35,7 @@ export async function generateMetadata({
     urlTag === "All"
       ? "Browse all your notes in NoteHub and keep them organized in one place."
       : `Viewing notes filtered by the tag "${urlTag}" in NoteHub. Easily manage and organize your ${urlTag} notes.`;
-  const url = `https://08-zustand-black-xi.vercel.app/notes/filter/${urlTag}`;
+  const url = `https://09-auth-brown-five.vercel.app/notes/filter/${urlTag}`;
 
   return {
     title,
