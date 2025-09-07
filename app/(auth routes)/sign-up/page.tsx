@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { registerUser } from "@/lib/api/clientApi";
 import { useAuthStore } from "@/lib/store/authStore";
 import { Credentials } from "@/types/user";
-import { ApiError } from "next/dist/server/api-utils";
+import { AxiosError } from "axios";
 import css from "./SignUpPage.module.css";
 
 const SignUpPage = () => {
@@ -21,9 +21,15 @@ const SignUpPage = () => {
         setUser(user);
         router.push("/profile");
       }
-    } catch (err) {
-      const e = err as ApiError;
-      setError(e.message ?? "Something went wrong");
+    } catch (err: unknown) {
+      const axiosError = err as AxiosError<{ error: string }>;
+      if (axiosError.response?.data?.error) {
+        setError(axiosError.response.data.error);
+      } else if (axiosError.message) {
+        setError(axiosError.message);
+      } else {
+        setError("Something went wrong");
+      }
     }
   };
 
