@@ -81,6 +81,11 @@ export interface UpdateProfileData {
   username: string;
 }
 
+export const getMe = async (): Promise<User> => {
+  const res = await api.get<User>("/users/me");
+  return res.data;
+};
+
 export const updateUserProfile = async (data: UpdateProfileData): Promise<User> => {
   const res = await api.patch<User>("/users/me", data);
   return res.data;
