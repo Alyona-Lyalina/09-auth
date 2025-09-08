@@ -9,13 +9,6 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-        if (!body.password || body.password.length < 6) {
-      return NextResponse.json(
-        { error: "Min 6 characters" },
-        { status: 400 }
-      );
-        }
-    
     const apiRes = await api.post('auth/register', body);
 
     const cookieStore = await cookies();

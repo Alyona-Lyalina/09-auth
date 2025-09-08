@@ -90,3 +90,14 @@ export const updateUserProfile = async (data: UpdateProfileData): Promise<User> 
   const res = await api.patch<User>("/users/me", data);
   return res.data;
 };
+
+// ================== SESSION ================== //
+
+interface SessionStatus {
+  success: boolean;
+}
+
+export const checkSession = async (): Promise<boolean> => {
+  const res = await api.get<SessionStatus>("/auth/session");
+  return res.data.success;
+};
